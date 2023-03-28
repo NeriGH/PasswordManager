@@ -10,7 +10,13 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	//DISPLAY TEXT WHEN BUTTON IS PRESSED 
+    private void OnButtonClicked(object sender, EventArgs e)
+    {
+		myLabel.Text = "ok";
+    }
+
+    private void OnCounterClicked(object sender, EventArgs e)
 	{
 		count++;
 
@@ -21,5 +27,7 @@ public partial class MainPage : ContentPage
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+
 }
 
