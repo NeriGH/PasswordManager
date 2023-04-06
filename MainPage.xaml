@@ -35,15 +35,9 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
-            <!--CREATE A BUTTON-->
-            <Button 
-                Text="Press me!" 
-                Clicked="OnButtonClicked" />
-            
-            <!--DISPLAY TEXT-->
-            <Label 
-                x:Name="myLabel" 
-                Text="" />
+
+            <Label x:Name="PasswordLabel" Text="MyPassword" IsVisible="True" />
+            <Button Text="Show/Hide" Clicked="OnShowHideClicked" />
 
         </VerticalStackLayout>
     </ScrollView>

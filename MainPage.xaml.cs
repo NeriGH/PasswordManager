@@ -10,11 +10,25 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	//DISPLAY TEXT WHEN BUTTON IS PRESSED 
-    private void OnButtonClicked(object sender, EventArgs e)
+
+    private bool isPasswordHidden = true;
+
+    private void OnShowHideClicked(object sender, EventArgs e)
     {
-		myLabel.Text = "ok";
+        if (isPasswordHidden)
+        {
+            var passwordLength = PasswordLabel.Text.Length;
+            var hiddenPassword = new string('•', passwordLength);
+            PasswordLabel.Text = hiddenPassword;
+            isPasswordHidden = false;
+        }
+        else
+        {
+            PasswordLabel.Text = "MyPassword";
+            isPasswordHidden = true;
+        }
     }
+
 
     private void OnCounterClicked(object sender, EventArgs e)
 	{

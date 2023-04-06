@@ -41,16 +41,17 @@ namespace PasswordManager.ViewModels
             await AppShell.Current.GoToAsync(nameof(AddUpdatePasswordDetail));
         }
 
+
         [ICommand]
         public async void DisplayAction(PasswordModel passwordModel)
         {
-           var response = await AppShell.Current.DisplayActionSheet("Select Option", "OK",null,"Edit","Delete");
-            if(response == "Edit")
+           var response = await AppShell.Current.DisplayActionSheet("Choose an option", "OK",null,"EDIT", "DELETE");
+            if(response == "EDIT")
             {
                 var navParam = new Dictionary<string, object>();
                 navParam.Add("PasswordDetail", passwordModel);
                 await AppShell.Current.GoToAsync(nameof(AddUpdatePasswordDetail),navParam);
-            } else if (response == "Delete")
+            } else if (response == "DELETE")
             {
               var delResponse =  await _passwordService.DeletePassword(passwordModel);
                 if(delResponse > 0)

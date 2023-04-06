@@ -12,7 +12,8 @@ public partial class PasswordListPage : ContentPage
 		this.BindingContext = viewModel;
 	}
 
-	protected override void OnAppearing()
+
+    protected override void OnAppearing()
 	{
 		base.OnAppearing();
 		_viewMode.GetPasswordListCommand.Execute(null);
