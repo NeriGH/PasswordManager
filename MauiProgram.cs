@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.LifecycleEvents;
 using PasswordManager.Services;
 using PasswordManager.ViewModels;
 using PasswordManager.Views;
@@ -17,6 +18,26 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+        builder.ConfigureLifecycleEvents(lifecycle =>
+        {
+#if WINDOWS
+                    lifecycle
+            .AddWindows(windows =>
+                windows.OnPlatformMessage((app, args) => {
+                    if (PasswordManager.Platforms.Windows.WindowExtensions.Hwnd == IntPtr.Zero)
+                    {
+                        PasswordManager.Platforms.Windows.WindowExtensions.Hwnd = args.Hwnd;
+                        PasswordManager.Platforms.Windows.WindowExtensions.SetIcon("Platforms/Windows/trayicon.ico");
+                    }
+                     app.ExtendsContentIntoTitleBar = false;
+                        }));
+#endif
+        });
+
+#if WINDOWS
+            builder.Services.AddSingleton<ITrayService, PasswordManager.Platforms.Windows.TrayService>();
+#endif
 
 
 
