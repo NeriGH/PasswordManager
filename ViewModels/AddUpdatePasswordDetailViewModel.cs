@@ -45,7 +45,10 @@ namespace PasswordManager.ViewModels
             if (response > 0)
             {
                 await Shell.Current.DisplayAlert("Password Info saved", "Record Saved", "OK");
-            } else
+                await Shell.Current.GoToAsync("//PasswordListPage");
+
+            }
+            else
             {
                 await Shell.Current.DisplayAlert("Heads Up!", "Something went wrong while adding record", "OK");
             }
