@@ -22,8 +22,6 @@
 
                 <Label Text="Safely store and manage all of your passwords in one place." FontSize="18" HorizontalOptions="Center" />
 
-                <Button Text="Get Started" FontSize="18" BackgroundColor="#427AA1" TextColor="White" Command="{Binding StartAppCommand}" HorizontalOptions="Center" />
-
             </VerticalStackLayout>
         </ScrollView>
 
